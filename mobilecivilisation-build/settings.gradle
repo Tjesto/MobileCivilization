@@ -1,2 +1,2 @@
 
-include "mobilecivilisation-protocol", "mobilecivilisation-server"
+include "mobilecivilisation-protocol", "mobilecivilisation-server", "mobilecivilisation-android"
