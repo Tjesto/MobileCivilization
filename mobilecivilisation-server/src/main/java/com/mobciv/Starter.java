@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.mobciv.Log.Log;
 import com.mobciv.connection.ServerSocketRunnable;
+import com.mobciv.connection.ServerSocketRunnable.OnEmergencyStopListener;
 import com.mobciv.handlers.Command;
 import com.mobciv.handlers.ServerSteeringCommandFilter;
 import com.mobciv.handlers.ServersUncoughtExceptionHandler;
@@ -24,6 +25,15 @@ public final class Starter {
 		logger.log(TAG, "Starting server socket");
 		Thread serverThread = new Thread(ServerSocketRunnable.getInstance());
 		logger.log(TAG, "Server socket thread prepared");
+		ServerSocketRunnable.getInstance().addListener(new OnEmergencyStopListener() {
+			
+			@Override
+			public void onEmergencyStop() {				
+				isRunning = false;
+				logger.log(TAG, "EMERGENCY STOP");
+			}
+		});
+		logger.log(TAG, "Server socket thread emergency stop listener added");
 		serverThread.start();
 		logger.log(TAG, "Server socket thread started");
 		ServerSteeringCommandFilter commandFilter = new StopCommandFilter();
