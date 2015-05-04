@@ -1,12 +1,14 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 version = '1.0'
+mainClassName = "com.mobciv.Starter"
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
+        attributes 'Starter': 'com.mobciv.Starter',
                    'Implementation-Version': version
     }
 }

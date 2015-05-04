@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.mobciv.Log.Log;
 
@@ -27,16 +29,34 @@ public class ServerSocketRunnable implements Runnable {
 	private ServerSocket serverSocket;  
 	
     private Socket clientSocket;
+    
+    private Map<Long, Socket> clients = new HashMap<>();
+    
+    private volatile static long id = 0;
 	
 	protected ServerSocketRunnable() {
 		Log.logger().log(TAG, "New server socket created");
-	}
+	}		
 
 	@Override
 	public void run() {		
 		isRunning = true;
 		Log.logger().log(TAG, "Server thread state: running");
 		while (isRunning) {
+			try {
+				Log.logger().log(
+						TAG,
+						"Waiting for clients...");
+				clientSocket = serverSocket.accept();
+				clients.put(id++, clientSocket);
+				Log.logger().log(
+						TAG,
+						"Client registered " + (id-1) + ": "
+								+ clientSocket.getInetAddress().toString()
+								+ ":" + clientSocket.getPort());
+			} catch (IOException e) {
+				e.printStackTrace(Log.logger().getPrintWriter());
+			}
 			
 		}
 		Log.logger().log(TAG, "Server thread state: " + (isRunning ? "Should be running" : "Finishing"));
@@ -80,7 +100,13 @@ public class ServerSocketRunnable implements Runnable {
 		if (serverSocket != null) {
 			try {
 				serverSocket.close();
-				Log.logger().log(TAG, "Socket closed");
+				Log.logger().log(TAG, "Server Socket closed");
+				for (Long l : clients.keySet()) {
+					Socket s = clients.get(l);
+					Log.logger().log(TAG, "Try to close connection for " + l + " on " + s.getInetAddress().toString() + ":" + s.getPort());
+					s.close();
+					Log.logger().log(TAG, "Client " + l + " Socket closed");
+				}
 			} catch (IOException e) {
 				Log.logger().log(TAG, "Unexpected error in closing socket");
 				e.printStackTrace(Log.logger().getPrintWriter());
