@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import com.mobciv.Log.Log;
 import com.mobciv.connection.ServerSocketRunnable;
+import com.mobciv.handlers.Command;
+import com.mobciv.handlers.ServerSteeringCommandFilter;
 import com.mobciv.handlers.ServersUncoughtExceptionHandler;
+import com.mobciv.handlers.StopCommandFilter;
 
 public final class Starter {
 	private static final String TAG = Starter.class.getName();
@@ -23,7 +26,9 @@ public final class Starter {
 		logger.log(TAG, "Server socket thread prepared");
 		serverThread.start();
 		logger.log(TAG, "Server socket thread started");
-		isRunning = true;
+		ServerSteeringCommandFilter commandFilter = new StopCommandFilter();
+		logger.log(TAG, "Command filters created");
+		isRunning = true;		
 		logger.log(TAG, "Starting sequence finished: SUCCESSFUL");
 		while (isRunning) {
 			byte[] commandBytes;
@@ -36,9 +41,7 @@ public final class Starter {
 				String command = new String(commandBytes, 0, readBytes);
 				command = command.replaceAll("\r\n", "");
 				logger.log(TAG, "Received new command: " + command);
-				if("stop".equals(command)) {
-					isRunning = false;
-				}
+				executeCommand(commandFilter.handle(command));
 			} catch (IOException e) {
 				logger.log(TAG, "Error in reciving steering command");
 				e.printStackTrace(logger.getPrintWriter());
@@ -47,6 +50,24 @@ public final class Starter {
 		}
 		logger.log(TAG, "Finishing");
 		finish();
+	}
+
+	private static void executeCommand(Command handle) {
+		switch (handle) {
+		case STOP:
+			isRunning = (boolean) handle.getValue();
+			Log.logger().log(TAG, "Stop command, finishing sequence started");
+			break;
+			
+		case NONE:
+			Log.logger().log(TAG, "Command not specified");
+			break;
+
+		default:
+			Log.logger().log(TAG, "Command not recognized");
+			break;
+		}
+		
 	}
 
 	private static void finish() {
