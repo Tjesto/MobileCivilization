@@ -64,7 +64,7 @@ public final class Log {
 		
 		@Override
 		public void close() {
-			println(DateFormat.getInstance().format(new Date(System.currentTimeMillis())) + " |\t| " + "Logger" +"\t| " + "Finishing");
+			println(DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.ENGLISH).format(new Date(System.currentTimeMillis())) + " |\t| " + "Logger" +"\t| " + "Finishing");
 			super.close();
 		}
 		
