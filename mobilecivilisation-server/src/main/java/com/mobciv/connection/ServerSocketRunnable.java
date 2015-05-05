@@ -1,6 +1,9 @@
 package com.mobciv.connection;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ public class ServerSocketRunnable implements Runnable {
 	
     private Socket clientSocket;
     
-    private Map<Long, Socket> clients = new HashMap<>();
+    private List<String> clients = new ArrayList<>();
     
     private volatile static long id = 0;
 	
@@ -48,18 +51,42 @@ public class ServerSocketRunnable implements Runnable {
 						TAG,
 						"Waiting for clients...");
 				clientSocket = serverSocket.accept();
-				clients.put(id++, clientSocket);
+				handleMessage();
+				String client = clientSocket.getInetAddress().toString() + ":" + "L:" + clientSocket.getLocalPort();
+				if (!clients.contains(client)) {
+					clients.add(client);
+				}
 				Log.logger().log(
 						TAG,
-						"Client registered " + (id-1) + ": "
-								+ clientSocket.getInetAddress().toString()
-								+ ":" + clientSocket.getPort());
+						"Client registered: "
+								+ client);
+				clientSocket.close();
 			} catch (IOException e) {
 				e.printStackTrace(Log.logger().getPrintWriter());
 			}
 			
 		}
 		Log.logger().log(TAG, "Server thread state: " + (isRunning ? "Should be running" : "Finishing"));
+	}
+
+	private void handleMessage() throws IOException {
+		PrintWriter outStream = new PrintWriter(clientSocket.getOutputStream(), true);
+		BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		//TODO
+		String request = inStream.readLine();
+		if (request != null) {
+			Log.logger().log(TAG, "Received request: " + request);			
+			outStream.println(request + " received");
+			outStream.flush();
+			if (request.contains("CLIENT_EXIT")) {
+				clients.remove(clientSocket.getInetAddress().toString() + ":" + clientSocket.getPort() + "L:" + clientSocket.getLocalPort());
+				Log.logger().log(
+						TAG,
+						"Client removed: "
+								+ clientSocket.getInetAddress().toString()
+								+ ":" + clientSocket.getPort());
+			}
+		}
 	}
 	
 	public synchronized static ServerSocketRunnable getInstance() {
@@ -101,12 +128,6 @@ public class ServerSocketRunnable implements Runnable {
 			try {
 				serverSocket.close();
 				Log.logger().log(TAG, "Server Socket closed");
-				for (Long l : clients.keySet()) {
-					Socket s = clients.get(l);
-					Log.logger().log(TAG, "Try to close connection for " + l + " on " + s.getInetAddress().toString() + ":" + s.getPort());
-					s.close();
-					Log.logger().log(TAG, "Client " + l + " Socket closed");
-				}
 			} catch (IOException e) {
 				Log.logger().log(TAG, "Unexpected error in closing socket");
 				e.printStackTrace(Log.logger().getPrintWriter());
@@ -123,6 +144,5 @@ public class ServerSocketRunnable implements Runnable {
 	public void removeListener(OnEmergencyStopListener listener) {
 		listeners.remove(listener);
 	}
-	
-	
+
 }
