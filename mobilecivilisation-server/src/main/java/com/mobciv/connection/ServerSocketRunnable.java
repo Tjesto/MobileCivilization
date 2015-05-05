@@ -78,6 +78,9 @@ public class ServerSocketRunnable implements Runnable {
 			Log.logger().log(TAG, "Received request: " + request);			
 			outStream.println(request + " received");
 			outStream.flush();
+			if (request.contains("stop")) {
+				emergencyFinish();
+			}
 			if (request.contains("CLIENT_EXIT")) {
 				clients.remove(clientSocket.getInetAddress().toString() + ":" + clientSocket.getPort() + "L:" + clientSocket.getLocalPort());
 				Log.logger().log(
