@@ -1,5 +1,6 @@
 package com.mobiciv.objects.protocol;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class BuildingSet {
@@ -7,6 +8,10 @@ public class BuildingSet {
 
 	BuildingSet( Set<Building> buildings ){
 		this.setBuildings(buildings);
+	}
+
+	public BuildingSet() {
+		this.setBuildings(new HashSet<Building>());
 	}
 
 	public Set<Building> getBuildings() {

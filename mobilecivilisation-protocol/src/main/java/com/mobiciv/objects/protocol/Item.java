@@ -1,6 +1,6 @@
 package com.mobiciv.objects.protocol;
 
-public class Item {
+public class Item implements java.io.Serializable{
 	private Coordinates coordinates;
 	private ItemType itemType;
 	

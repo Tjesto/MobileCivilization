@@ -1,6 +1,6 @@
 package com.mobiciv.objects.protocol;
 
-public class Unit {
+public class Unit implements java.io.Serializable{
 	/*There is no information about units health*/
 	private Coordinates coordinates;
 	private int ID;

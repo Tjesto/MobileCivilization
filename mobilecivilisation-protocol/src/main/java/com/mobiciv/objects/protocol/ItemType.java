@@ -1,5 +1,5 @@
 package com.mobiciv.objects.protocol;
 
-public enum ItemType {
+public enum ItemType implements java.io.Serializable{
 
 }
