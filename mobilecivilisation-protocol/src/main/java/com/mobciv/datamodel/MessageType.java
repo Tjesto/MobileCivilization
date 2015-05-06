@@ -1,0 +1,5 @@
+package com.mobciv.datamodel;
+
+public enum MessageType {
+	HEARTBEAT, HANDSHAKE, JOIN_GAME, NEW_GAME, END_TURN, SERVER_RESPONSE, SERVER_HEARTBEAT_RESPONSE
+}
