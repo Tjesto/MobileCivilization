@@ -1,6 +1,6 @@
 package com.mobciv.protocol;
 
-public class ServerResponseMessage implements java.io.Serializable{
+public class ServerResponse implements java.io.Serializable{
 
 	private int code;
 	
@@ -8,7 +8,7 @@ public class ServerResponseMessage implements java.io.Serializable{
 		return code;
 	}
 	
-	ServerResponseMessage(int code){
+	ServerResponse(int code){
 		this.code = code;
 	}
 
