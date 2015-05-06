@@ -5,8 +5,10 @@ import com.mobciv.datamodel.MessageType;
 
 public class HandshakeRequest extends Message {
 
+	public static int REQUEST_ID = 0x0001 + Message.REQUEST;		
+
 	public HandshakeRequest(String playerID, int civilisationID){
-		super(playerID, civilisationID,MessageType.HANDSHAKE);
+		super(REQUEST_ID, playerID, civilisationID,MessageType.HANDSHAKE);		
 	}
 
 }
