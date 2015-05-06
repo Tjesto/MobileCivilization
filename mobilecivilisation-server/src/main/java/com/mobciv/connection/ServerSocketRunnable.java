@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.mobciv.Log.Log;
+import com.mobciv.datamodel.JsonSerializable;
+import com.mobciv.datamodel.JsonSerializer;
+import com.mobciv.protocol.handlers.AbstractRequestHandler;
+import com.mobciv.protocol.handlers.RequestHandlersFactory;
 
 public class ServerSocketRunnable implements Runnable {
 	
@@ -34,6 +38,8 @@ public class ServerSocketRunnable implements Runnable {
     private Socket clientSocket;
     
     private List<String> clients = new ArrayList<>();
+
+	private AbstractRequestHandler requestHandler;
     
     private volatile static long id = 0;
 	
@@ -74,7 +80,8 @@ public class ServerSocketRunnable implements Runnable {
 		BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		//TODO
 		String request = inStream.readLine();
-		if (request != null) {
+		if (request != null) {			
+			this.requestHandler.handleRequest(request);
 			Log.logger().log(TAG, "Received request: " + request);			
 			outStream.println(request + " received");
 			outStream.flush();
@@ -101,6 +108,7 @@ public class ServerSocketRunnable implements Runnable {
 	}
 
 	private void initialize() {
+		this.requestHandler = RequestHandlersFactory.create();
 		try {
 			serverSocket = new ServerSocket(PORT_NUMBER);
 			Log.logger().log(
