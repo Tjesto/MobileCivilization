@@ -1,0 +1,2 @@
+include 'mobilecivilisation-protocol'
+project(':mobilecivilisation-protocol').projectDir = new File(settingsDir, '../mobilecivilisation-protocol')

@@ -8,10 +8,10 @@ import com.mobciv.protocol.reponses.ErrorResponse;
 public abstract class AbstractRequestHandler {
 	
 	protected AbstractRequestHandler next;
-	private final Class<? extends JsonSerializable> handledRequest;
+	private final Class<?> handledRequest;
 	protected final String requestId;
 	
-	public AbstractRequestHandler(Class<? extends JsonSerializable> handledRequest, int requestId) {
+	public AbstractRequestHandler(Class<?> handledRequest, int requestId) {
 		this.handledRequest = handledRequest;
 		this.requestId = Integer.toString(requestId);
 	}

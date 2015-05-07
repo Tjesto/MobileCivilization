@@ -10,9 +10,10 @@ public abstract class JsonSerializer {
 		return gson.toJson(chunk);
 	}
 	
-	public static <T extends JsonSerializable> T fromJson(String json, Class<T> type) {
+	@SuppressWarnings("unchecked")
+	public static <T extends JsonSerializable> T fromJson(String json, Class<?> handledRequest) {
 		Gson gson = new GsonBuilder().create();
-		return gson.fromJson(json, type);
+		return (T) gson.fromJson(json, handledRequest);
 	}
 	
 }

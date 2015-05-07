@@ -1,6 +1,7 @@
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'eclipse'
+    apply plugin: 'eclipse'  
+      
 
     repositories {
        mavenCentral()
@@ -15,4 +16,5 @@ subprojects {
     jar {
         manifest.attributes provider: 'my cool company'
     }
+    
 }

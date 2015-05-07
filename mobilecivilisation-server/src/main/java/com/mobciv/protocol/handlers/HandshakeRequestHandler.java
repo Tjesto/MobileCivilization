@@ -8,7 +8,7 @@ public class HandshakeRequestHandler extends AbstractRequestHandler {
 
 	@SuppressWarnings("unchecked")
 	public HandshakeRequestHandler() {
-		super((Class<? extends JsonSerializable>) HandshakeRequestHandler.class, HandshakeRequest.REQUEST_ID);
+		super(HandshakeRequestHandler.class, HandshakeRequest.REQUEST_ID);
 	}
 
 	@Override
