@@ -5,7 +5,7 @@ import com.mobciv.datamodel.MessageType;
 
 public class NewGameRequest extends Message {
 	
-	NewGameRequest(String playerID, int civilisationID){
+	public NewGameRequest(String playerID, int civilisationID){
 		super(playerID, civilisationID,MessageType.NEW_GAME);
 	}
 

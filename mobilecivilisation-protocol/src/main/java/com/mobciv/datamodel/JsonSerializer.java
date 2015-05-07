@@ -11,9 +11,9 @@ public abstract class JsonSerializer {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T extends JsonSerializable> T fromJson(String json, Class<?> handledRequest) {
+	public static JsonSerializable fromJson(String json, Class<?> handledRequest) {
 		Gson gson = new GsonBuilder().create();
-		return (T) gson.fromJson(json, handledRequest);
+		return (JsonSerializable) gson.fromJson(json, handledRequest);
 	}
 	
 }

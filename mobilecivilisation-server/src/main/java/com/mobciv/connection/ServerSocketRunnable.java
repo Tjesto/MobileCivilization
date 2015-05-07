@@ -80,10 +80,15 @@ public class ServerSocketRunnable implements Runnable {
 		BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		//TODO
 		String request = inStream.readLine();
-		if (request != null) {			
-			this.requestHandler.handleRequest(request);
-			Log.logger().log(TAG, "Received request: " + request);			
-			outStream.println(request + " received");
+		if (request != null) {		
+			Log.logger().log(TAG, "Received request: " + request);
+			if (!request.contains("{")) {
+				outStream.println(request + " received");
+			} else {
+				JsonSerializable response = this.requestHandler.handleRequest(request);
+				outStream.println(JsonSerializer.toJson(response));
+			}
+			
 			outStream.flush();
 			if (request.contains("stop")) {
 				emergencyFinish();
