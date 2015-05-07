@@ -8,7 +8,7 @@ public class HandshakeRequestHandler extends AbstractRequestHandler {
 
 	@SuppressWarnings("unchecked")
 	public HandshakeRequestHandler() {
-		super(HandshakeRequestHandler.class, HandshakeRequest.REQUEST_ID);
+		super(HandshakeRequest.class, HandshakeRequest.REQUEST_ID);
 	}
 
 	@Override
