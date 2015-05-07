@@ -25,7 +25,7 @@ public class JsonSerializerTest {
 	@Test
 	public void testFromJson() {
 		String result = JsonSerializer.toJson(message);
-		HandshakeRequest m2 = JsonSerializer.fromJson(result, HandshakeRequest.class);
+		HandshakeRequest m2 = (HandshakeRequest) JsonSerializer.fromJson(result, HandshakeRequest.class);
 		assertEquals(message, m2);
 	}
 
