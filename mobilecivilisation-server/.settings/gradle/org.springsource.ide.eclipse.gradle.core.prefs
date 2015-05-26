@@ -1,5 +1,5 @@
 #org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
-#Fri Apr 24 01:05:27 CEST 2015
-build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;
+#Thu May 07 13:43:19 CEST 2015
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;../mobilecivilisation-protocol;
 org.springsource.ide.eclipse.gradle.linkedresources=
 org.springsource.ide.eclipse.gradle.rootprojectloc=
