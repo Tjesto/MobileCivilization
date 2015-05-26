@@ -5,9 +5,11 @@ import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 
 public class NewGameResponse extends Message {
+	
+	public static int RESPONSE_ID = 0x0002 + Message.RESPONSE;
 
-	NewGameResponse(String playerID, int civilisationID) {
-		super(playerID, civilisationID, MessageType.NEW_GAME);
+	public NewGameResponse(String playerID, int civilisationID) {
+		super(RESPONSE_ID, playerID, civilisationID, MessageType.NEW_GAME);
 	}
 
 }

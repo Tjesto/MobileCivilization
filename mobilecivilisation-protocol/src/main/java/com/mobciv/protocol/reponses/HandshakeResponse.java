@@ -5,8 +5,10 @@ import com.mobciv.datamodel.MessageType;
 
 public class HandshakeResponse extends Message {
 
+	public static int RESPONSE_ID = 0x0001 + Message.RESPONSE;
+	
 	public HandshakeResponse(String playerID, int civilisationID){
-		super(playerID, civilisationID,MessageType.HANDSHAKE);
+		super(RESPONSE_ID, playerID, civilisationID, MessageType.HANDSHAKE);
 	}
 
 }
