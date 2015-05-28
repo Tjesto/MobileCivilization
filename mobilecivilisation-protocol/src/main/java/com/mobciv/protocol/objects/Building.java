@@ -6,7 +6,7 @@ public class Building implements JsonSerializable{
 	private String cityName;
 	private BuildingType buildingType;
 	
-	Building( String cityName, BuildingType buildingType ){
+	public Building( String cityName, BuildingType buildingType ){
 		this.setBuildingType(buildingType);
 		this.setCityName(cityName);
 	}

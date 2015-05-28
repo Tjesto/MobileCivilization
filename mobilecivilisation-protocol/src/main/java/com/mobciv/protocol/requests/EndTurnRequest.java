@@ -6,14 +6,17 @@ import com.mobciv.protocol.objects.ChangesList;
 
 public class EndTurnRequest extends Message {
 
-	private ChangesList changesList;
+	public static int REQUEST_ID = 0x0006 + Message.REQUEST;
+	
+	private final ChangesList changesList;
 	
 	public EndTurnRequest(String playerID, int civilisationID,  ChangesList changesList) {
-		super(playerID, civilisationID, MessageType.END_TURN);
-		this.setChangesList(changesList);
-	}
-
-	public void setChangesList(ChangesList changesList) {
+		super(REQUEST_ID, playerID, civilisationID, MessageType.END_TURN);
 		this.changesList = changesList;
 	}
+
+	public ChangesList getChangesList() {
+		return changesList;
+	}
+
 }

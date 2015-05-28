@@ -3,8 +3,11 @@ package com.mobciv.protocol.reponses;
 import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 
-public class JoinGameResponse extends Message implements java.io.Serializable{
-	JoinGameResponse(String playerID, int civilisationID){
-		super(playerID, civilisationID,MessageType.JOIN_GAME);
+public class JoinGameResponse extends Message{
+	
+	public static int RESPONSE_ID = 0x0003 + Message.RESPONSE;
+	
+	public JoinGameResponse(String playerID, int civilisationID){
+		super(RESPONSE_ID, playerID, civilisationID,MessageType.JOIN_GAME);
 	}
 }
