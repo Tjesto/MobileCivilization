@@ -4,7 +4,8 @@ public final class RequestHandlersFactory {
 
 	public static AbstractRequestHandler create() {
 		AbstractRequestHandler handler = new HandshakeRequestHandler();
-		//add other handlers
+		handler.add(new NewGameRequestHandler());
+		handler.add(new JoinGameRequestHandler());
 		return handler;
 	}
 

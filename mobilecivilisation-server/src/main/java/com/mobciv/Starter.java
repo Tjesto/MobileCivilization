@@ -9,6 +9,7 @@ import com.mobciv.handlers.Command;
 import com.mobciv.handlers.ServerSteeringCommandFilter;
 import com.mobciv.handlers.ServersUncoughtExceptionHandler;
 import com.mobciv.handlers.StopCommandFilter;
+import com.mobciv.utils.Config;
 
 public final class Starter {
 	private static final String TAG = Starter.class.getName();
@@ -17,6 +18,7 @@ public final class Starter {
 
 	public static void main(String[] args) {
 		Log logger = Log.logger();
+		logger.log(TAG, "Version " + Config.VERSION);
 		logger.log(TAG, "Starting sequence started");
 		Thread.currentThread().setUncaughtExceptionHandler(
 				new ServersUncoughtExceptionHandler(Thread.currentThread()
