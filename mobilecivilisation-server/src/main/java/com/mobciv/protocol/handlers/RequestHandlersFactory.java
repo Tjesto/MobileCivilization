@@ -7,6 +7,7 @@ public final class RequestHandlersFactory {
 		handler.add(new NewGameRequestHandler());
 		handler.add(new JoinGameRequestHandler());
 		handler.add(new StatusCheckerRequestHandler());
+		handler.add(new GetAvailableGamesRequestHandler());
 		return handler;
 	}
 
