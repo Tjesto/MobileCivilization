@@ -6,6 +6,7 @@ public final class RequestHandlersFactory {
 		AbstractRequestHandler handler = new HandshakeRequestHandler();
 		handler.add(new NewGameRequestHandler());
 		handler.add(new JoinGameRequestHandler());
+		handler.add(new StatusCheckerRequestHandler());
 		return handler;
 	}
 
