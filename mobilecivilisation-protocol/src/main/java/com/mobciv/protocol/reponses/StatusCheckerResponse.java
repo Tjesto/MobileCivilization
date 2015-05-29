@@ -1,10 +1,11 @@
 package com.mobciv.protocol.reponses;
 
+import com.mobciv.datamodel.AbstractResponse;
 import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 import com.mobciv.protocol.objects.ChangesList;
 
-public class StatusCheckerResponse extends Message {
+public class StatusCheckerResponse extends AbstractResponse {
 	
 	public static int RESPONSE_ID = 0x0000 + Message.RESPONSE;
 	

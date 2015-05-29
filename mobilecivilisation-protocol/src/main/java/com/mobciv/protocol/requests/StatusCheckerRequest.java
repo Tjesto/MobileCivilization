@@ -1,9 +1,10 @@
 package com.mobciv.protocol.requests;
 
+import com.mobciv.datamodel.AbstractRequest;
 import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 
-public class StatusCheckerRequest extends Message{
+public class StatusCheckerRequest extends AbstractRequest {
 	
 	public static int REQUEST_ID = 0x000 + Message.REQUEST;		
 	

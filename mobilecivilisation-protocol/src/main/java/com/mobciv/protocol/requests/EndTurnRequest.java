@@ -1,10 +1,11 @@
 package com.mobciv.protocol.requests;
 
+import com.mobciv.datamodel.AbstractRequest;
 import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 import com.mobciv.protocol.objects.ChangesList;
 
-public class EndTurnRequest extends Message {
+public class EndTurnRequest extends AbstractRequest {
 
 	public static int REQUEST_ID = 0x0006 + Message.REQUEST;
 	

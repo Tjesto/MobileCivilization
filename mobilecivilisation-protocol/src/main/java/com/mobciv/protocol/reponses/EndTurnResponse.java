@@ -1,10 +1,11 @@
 package com.mobciv.protocol.reponses;
 
+import com.mobciv.datamodel.AbstractResponse;
 import com.mobciv.datamodel.Message;
 import com.mobciv.datamodel.MessageType;
 import com.mobciv.protocol.objects.ChangesList;
 
-public class EndTurnResponse extends Message {
+public class EndTurnResponse extends AbstractResponse {
 	
 	public static int RESPONSE_ID = 0x0006 + Message.RESPONSE;		
 
