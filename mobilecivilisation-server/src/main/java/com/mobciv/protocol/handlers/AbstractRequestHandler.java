@@ -17,7 +17,7 @@ public abstract class AbstractRequestHandler {
 	}
 
 	protected boolean filterRequest(String request) {
-		return request.replaceAll("[\\[\\]\\{\\}]", "").startsWith(this.getRequestId());
+		return request.replaceAll("[\\[\\]\\{\\}]", "").contains(this.getRequestId());
 				
 	}
 	

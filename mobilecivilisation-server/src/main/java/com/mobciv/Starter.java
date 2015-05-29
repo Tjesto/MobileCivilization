@@ -42,6 +42,7 @@ public final class Starter {
 		logger.log(TAG, "Command filters created");
 		isRunning = true;		
 		logger.log(TAG, "Starting sequence finished: SUCCESSFUL");
+		logger.log(TAG, "Version " + Config.VERSION);
 		while (isRunning) {
 			byte[] commandBytes;
 			try {

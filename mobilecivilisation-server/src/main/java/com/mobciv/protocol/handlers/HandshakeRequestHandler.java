@@ -1,5 +1,6 @@
 package com.mobciv.protocol.handlers;
 
+import com.mobciv.Log.Log;
 import com.mobciv.datamodel.JsonSerializable;
 import com.mobciv.protocol.reponses.HandshakeResponse;
 import com.mobciv.protocol.requests.HandshakeRequest;
@@ -21,6 +22,8 @@ public class HandshakeRequestHandler extends AbstractRequestHandler {
 		HandshakeRequest concreteRequest = (HandshakeRequest) getRequest(request);
 		
 		//handleRequest;
+		
+		Log.logger().log(getClass().getName(), concreteRequest + " Received");
 		
 		return new HandshakeResponse(concreteRequest.getPlayerID(), concreteRequest.getCivilisationID());
 	}
