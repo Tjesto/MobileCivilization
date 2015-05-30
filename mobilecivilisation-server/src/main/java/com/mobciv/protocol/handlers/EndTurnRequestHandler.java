@@ -1,5 +1,6 @@
 package com.mobciv.protocol.handlers;
 
+import com.mobciv.Log.Log;
 import com.mobciv.datamodel.JsonSerializable;
 import com.mobciv.protocol.reponses.EndTurnResponse;
 import com.mobciv.protocol.reponses.GetAvailableGamesResponse;
@@ -19,6 +20,8 @@ public class EndTurnRequestHandler extends AbstractRequestHandler {
 		}
 		
 		EndTurnRequest concreteRequest = (EndTurnRequest) getRequest(request);
+		
+		Log.logger().log(getClass().getName(), concreteRequest + " Received");
 		
 		return new EndTurnResponse(concreteRequest.getPlayerID(), concreteRequest.getCivilisationID(), null);
 	}
