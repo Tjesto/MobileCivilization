@@ -1,6 +1,7 @@
-package com.example.mobilecivilisation_android;
+package com.example.mobilecivilisation.ui.activities;
 
-import com.example.mobilecivilisation_android.util.SystemUiHider;
+import com.example.mobilecivilisation.ui.util.SystemUiHider;
+import com.example.mobilecivilisation.R;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

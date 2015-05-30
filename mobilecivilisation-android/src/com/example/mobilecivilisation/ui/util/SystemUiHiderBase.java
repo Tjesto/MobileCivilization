@@ -1,4 +1,4 @@
-package com.example.mobilecivilisation_android.util;
+package com.example.mobilecivilisation.ui.util;
 
 import android.app.Activity;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.example.mobilecivilisation_android.util;
+package com.example.mobilecivilisation.ui.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
