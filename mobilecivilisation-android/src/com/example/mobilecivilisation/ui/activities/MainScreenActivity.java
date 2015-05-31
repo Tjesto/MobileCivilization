@@ -36,8 +36,8 @@ private Toolbar toolbar;
 		case R.id.new_game:
 			startActivity(new Intent(this, MainGameActivity.class));
 			break;
-		case R.id.help:
-			startActivity(new Intent(this, SettingsMenuActivityL.class));
+		case R.id.settings:
+			startActivity(new Intent(this, SettingsMenuActivity.class));
 			break;
 		default:
 			return super.onOptionsItemSelected(item);

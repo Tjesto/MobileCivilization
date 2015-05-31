@@ -24,6 +24,10 @@
             android:name="com.example.mobilecivilisation.ui.activities.MainScreenActivity"/>
         <activity 
             android:name="com.example.mobilecivilisation.ui.activities.MainScreenActivityL"/>
+        <activity 
+            android:name="com.example.mobilecivilisation.ui.activities.SettingsMenuActivity"/>
+        <activity 
+            android:name="com.example.mobilecivilisation.ui.activities.SettingsMenuActivityL"/>
         <activity
             android:name="com.example.mobilecivilisation.ui.activities.MainGameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

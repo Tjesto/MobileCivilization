@@ -39,7 +39,7 @@ public class MainScreenActivityL extends Activity {
 		case R.id.new_game:
 			startActivity(new Intent(this, MainGameActivity.class));
 			break;
-		case R.id.help:
+		case R.id.settings:
 			startActivity(new Intent(this, SettingsMenuActivityL.class));
 			break;
 		default:
