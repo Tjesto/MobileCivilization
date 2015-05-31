@@ -13,7 +13,6 @@ public class ChangesList implements JsonSerializable {
 	private SpyingInfoSet spyingInfo;
 	private UnitSet unitsCreated;
 	private UnitSet unitsMoved;
-	private UnitHealthChangeSet unitsHealthChange;
 	private UnitSet unitsDestroyed;
 
 	ChangesList(CitiesSet citiesCreated, CitiesSet citiesDestroyed,
@@ -21,7 +20,7 @@ public class ChangesList implements JsonSerializable {
 			DilomaticPropositionSet propositionsDiplomatic,
 			BuildingSet buildingStarted, BuildingSet buildingFinished,
 			SpyingInfoSet spyingInfo, UnitSet unitsCreated, UnitSet unitsMoved,
-			UnitHealthChangeSet unitsHealthChange, UnitSet unitsDestroyed) {
+			UnitSet unitsDestroyed) {
 		this.setCitiesCreated(citiesCreated);
 		this.setCitiesDestroyed(citiesDestroyed);
 		this.setItemsConstructed(itemsConstructed);
@@ -32,7 +31,6 @@ public class ChangesList implements JsonSerializable {
 		this.setSpyingInfo(spyingInfo);
 		this.setUnitsCreated(unitsCreated);
 		this.setUnitsMoved(unitsMoved);
-		this.setUnitsHealthChange(unitsHealthChange);
 		this.setUnitsMoved(unitsDestroyed);
 	}
 
@@ -47,7 +45,6 @@ public class ChangesList implements JsonSerializable {
 		this.setSpyingInfo(new SpyingInfoSet());
 		this.setUnitsCreated(new UnitSet());
 		this.setUnitsMoved(new UnitSet());
-		this.setUnitsHealthChange(new UnitHealthChangeSet());
 		this.setUnitsMoved(new UnitSet());
 	}
 
@@ -138,14 +135,6 @@ public class ChangesList implements JsonSerializable {
 
 	public void setUnitsCreated(UnitSet unitsCreated) {
 		this.unitsCreated = unitsCreated;
-	}
-
-	public UnitHealthChangeSet getUnitsHealthChange() {
-		return unitsHealthChange;
-	}
-
-	public void setUnitsHealthChange(UnitHealthChangeSet unitsHealthChange) {
-		this.unitsHealthChange = unitsHealthChange;
 	}
 
 }
