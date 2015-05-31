@@ -7,5 +7,11 @@
     <string name="new_game">New game</string>
     <string name="settings">Help</string>
     <string name="debug">Debug</string>
+    <string name="debug_handshake">Send Handshake</string>
+    <string name="debug_get_games">Send GetAvailableGames</string>
+    <string name="debug_newgame">Send NewGame</string>
+    <string name="debug_joingame">Send JoinGame</string>
+    <string name="debug_end_turn">Send EndTurn</string>
+    <string name="debug_status">Send Status</string>
 
 </resources>

@@ -10,6 +10,7 @@ apply plugin: 'android'
 apply plugin: 'distribution'
 
 dependencies {
+	compile project(':mobilecivilisation-protocol')
     compile fileTree(dir: 'libs', include: '*.jar')
 }
 

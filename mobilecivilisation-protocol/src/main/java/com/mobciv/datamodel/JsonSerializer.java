@@ -10,7 +10,6 @@ public abstract class JsonSerializer {
 		return gson.toJson(chunk);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public static JsonSerializable fromJson(String json, Class<?> handledRequest) {
 		Gson gson = new GsonBuilder().create();
 		return (JsonSerializable) gson.fromJson(json, handledRequest);

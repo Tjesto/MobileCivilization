@@ -2,6 +2,7 @@ package com.example.mobilecivilisation.ui.adapters;
 
 import java.util.List;
 
+import com.example.mobilecivilisation.R;
 import com.example.mobilecivilisation.misc.Option;
 
 import android.content.Context;
@@ -18,7 +19,7 @@ public class OptionsAdapter extends ArrayAdapter<Option> {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		TextView v = new TextView(getContext());
+		TextView v = (TextView) View.inflate(getContext(), R.layout.settings_item, null);
 		Option o = getItem(position);
 		v.setText(o.getTitleId());
 		return v;
