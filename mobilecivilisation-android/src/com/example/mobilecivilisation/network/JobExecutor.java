@@ -27,8 +27,9 @@ public class JobExecutor extends AsyncTask<JsonSerializable, Void, JsonSerializa
 	@Override
 	protected JsonSerializable doInBackground(JsonSerializable... params) {
 		try {
+			@SuppressWarnings("resource")
 			Socket clientSocket = new Socket(Config.HOST_ADDRESS, Config.HOST_PORT);
-			PrintWriter pw = new PrintWriter(clientSocket.getOutputStream());
+			PrintWriter pw = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 			JsonSerializable request = params[0];
