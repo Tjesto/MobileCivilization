@@ -57,7 +57,7 @@ public class DebugMenuActivity extends Activity implements Caller {
 			
 			@Override
 			public void run() {
-				job = new HandshakeJob(context, new HandshakeRequest(HardwareInfo.getId(context), -1));
+				job = new HandshakeJob(context, new HandshakeRequest(HardwareInfo.getId(context)));
 				job.execute();
 			}
 		}));
@@ -73,8 +73,7 @@ public class DebugMenuActivity extends Activity implements Caller {
 			
 			@Override
 			public void run() {
-				job = new NewGameJob(context, new NewGameRequest(HardwareInfo.getId(context), -1, "Test room"));
-				//job = new GetAvailableGamesJob(DebugMenuActivity.this, new GetAvailableGamesRequest(HardwareInfo.getId(DebugMenuActivity.this)));				
+				job = new NewGameJob(context, new NewGameRequest(HardwareInfo.getId(context), "Test room"));
 				job.execute();
 			}
 		}));
