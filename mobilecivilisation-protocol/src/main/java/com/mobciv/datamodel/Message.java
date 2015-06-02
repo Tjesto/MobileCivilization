@@ -6,25 +6,35 @@ public abstract class Message implements JsonSerializable {
 	public static final int RESPONSE = 0x2000;
 		
 	private final String playerID;
-	private final int civilisationID;
-	private final MessageType type;		
+	@Deprecated
+	private int civilisationID;
+	
+	@Deprecated
+	private MessageType type;		
 	
 	public abstract int getPacketId();	
 	
 	public String getPlayerID() {
 		return playerID;
 	}
+	
+	@Deprecated
 	public int getCivilisationID() {
 		return civilisationID;
 	}
+	
+	@Deprecated
 	public MessageType getType() {
 		return type;
 	}
-		
+	
+	public Message(String playerID) {
+		this.playerID = playerID; 
+	}
+	
+	@Deprecated
 	public Message(String playerID, int civilisationID,MessageType type){
-		this.playerID = playerID;
-		this.civilisationID = civilisationID;
-		this.type = type;
+		this(playerID);
 	}
 	
 	@Deprecated
@@ -38,7 +48,7 @@ public abstract class Message implements JsonSerializable {
 			return false;
 		}
 		Message m = (Message) obj;
-		return m.playerID.equals(playerID) && m.civilisationID == civilisationID && type == m.type;
+		return getPacketId() == m.getPacketId() && m.playerID.equals(playerID);
 		
 	}
 	

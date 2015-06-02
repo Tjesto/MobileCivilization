@@ -10,9 +10,8 @@ public class GetAvailableGamesResponse extends AbstractResponse {
 	public static int RESPONSE_ID = 0x0004 + Message.RESPONSE;
 	private final AvailableGameList games;
 
-	public GetAvailableGamesResponse(String playerID,
-			int civilisationID, AvailableGameList games) {
-		super(RESPONSE_ID, playerID, civilisationID, MessageType.SERVER_RESPONSE);
+	public GetAvailableGamesResponse(String playerID, AvailableGameList games) {
+		super(RESPONSE_ID, playerID, -1, MessageType.SERVER_RESPONSE);
 		this.games = games;
 	}
 

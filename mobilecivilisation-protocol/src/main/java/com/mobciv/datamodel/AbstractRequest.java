@@ -4,6 +4,12 @@ public class AbstractRequest extends Message {
 	
 	private final int requestId;
 
+	public AbstractRequest(int requestId, String playerID) {
+		super(playerID);
+		this.requestId = requestId;
+	}
+	
+	@Deprecated
 	public AbstractRequest(int requestId, String playerID, int civilisationID,
 			MessageType type) {
 		super(playerID, civilisationID, type);

@@ -13,7 +13,7 @@ public class JsonSerializerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		message = new HandshakeRequest("test", 0x20);
+		message = new HandshakeRequest("test");
 	}
 
 	@Test
