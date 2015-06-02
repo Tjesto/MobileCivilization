@@ -9,17 +9,27 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.mobilecivilisation.R;
+import com.example.mobilecivilisation.ui.activities.impl.ActivityImpl;
+import com.example.mobilecivilisation.ui.activities.impl.MainScreenActivityImpl;
 
 public class MainScreenActivity extends AppCompatActivity {
 
 private Toolbar toolbar;
+private ActivityImpl impl;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_screen);	
+		impl = new MainScreenActivityImpl(this);
+		impl.onCreate(savedInstanceState);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		impl.onResume();
 	}
 	
 	@Override

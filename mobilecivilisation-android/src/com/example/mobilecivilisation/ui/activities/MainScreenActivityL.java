@@ -1,6 +1,8 @@
 package com.example.mobilecivilisation.ui.activities;
 
 import com.example.mobilecivilisation.R;
+import com.example.mobilecivilisation.ui.activities.impl.ActivityImpl;
+import com.example.mobilecivilisation.ui.activities.impl.MainScreenActivityImpl;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -16,13 +18,21 @@ import android.widget.Toolbar;
 public class MainScreenActivityL extends Activity {
 	
 	private Toolbar toolbar;
+	private ActivityImpl impl;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_screen);	
+		impl = new MainScreenActivityImpl(this);
+		impl.onCreate(savedInstanceState);
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setActionBar(toolbar);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		impl.onResume();
 	}
 
 	@Override
