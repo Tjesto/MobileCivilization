@@ -7,7 +7,6 @@ import com.mobciv.protocol.requests.HandshakeRequest;
 
 public class HandshakeRequestHandler extends AbstractRequestHandler {
 
-	@SuppressWarnings("unchecked")
 	public HandshakeRequestHandler() {
 		super(HandshakeRequest.class, HandshakeRequest.REQUEST_ID);
 	}
@@ -20,12 +19,12 @@ public class HandshakeRequestHandler extends AbstractRequestHandler {
 		}
 		
 		HandshakeRequest concreteRequest = (HandshakeRequest) getRequest(request);
-		
-		//handleRequest;
-		
 		Log.logger().log(getClass().getName(), concreteRequest + " Received");
 		
-		return new HandshakeResponse(concreteRequest.getPlayerID(), concreteRequest.getCivilisationID());
+		//handleRequest;
+		//wpis do bazy z informacj¹ o graczu				
+		//stworzyæ odpowiedni response
+		return new HandshakeResponse(concreteRequest.getPlayerID(), -1);
 	}
 
 }
