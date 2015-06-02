@@ -7,7 +7,7 @@ public class AvailableGameList implements JsonSerializable {
 	private AvailableGame[] games;
 
 	public AvailableGameList(AvailableGame[] games) {
-		this.games = games;		
+		this.games = games != null ? games : new AvailableGame[0];		
 	}
 	
 	public int getAvailableGamesCount() {
