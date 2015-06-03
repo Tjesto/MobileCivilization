@@ -1,5 +1,6 @@
 package com.mobilecivilisation.ui.activities;
 
+import com.mobilecivilisation.ui.util.Keys;
 import com.mobilecivilisation.ui.util.SystemUiHider;
 import com.mobilecivilisation.R;
 
@@ -51,7 +52,10 @@ public class MainGameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_main_game);
-
+		String roomName = getIntent().getStringExtra(Keys.NEW_ROOM_TITLE);
+		if (roomName != null) {
+			setTitle(roomName);
+		}
 		final View controlsView = findViewById(R.id.fullscreen_content_controls);
 		final View contentView = findViewById(R.id.fullscreen_content);
 

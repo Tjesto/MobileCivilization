@@ -1,5 +1,7 @@
 package com.mobilecivilisation.network.jobs;
 
+import android.util.Log;
+
 import com.mobciv.protocol.reponses.NewGameResponse;
 import com.mobciv.protocol.requests.NewGameRequest;
 import com.mobilecivilisation.network.Caller;
