@@ -13,5 +13,8 @@
     <string name="debug_joingame">Send JoinGame</string>
     <string name="debug_end_turn">Send EndTurn</string>
     <string name="debug_status">Send Status</string>
-
+    <string name="new_game_dialog_title">Choose room name:</string>
+    <string name="new_game_dialog_proceed">Continue</string>
+    <string name="abort">Cancel</string>
+	<string name="civilisation_chooser_dialog_title">Choose civilisation</string>
 </resources>
